@@ -20,6 +20,22 @@ variables:
   vmImageName: 'ubuntu-latest'
 
 stages:
+- stage: package
+  displayName: Build and Package
+  jobs:
+  - job: Build
+    displayName: Build
+    steps:
+    - task: Maven@4
+      inputs:
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
 - stage: Build
   displayName: Build and push stage
   jobs:
