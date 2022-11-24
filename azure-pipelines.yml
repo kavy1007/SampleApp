@@ -8,6 +8,8 @@ trigger:
 resources:
 - repo: self
 
+pool: Default
+
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '8ca3816d-bb1e-4246-ba45-2d041e3990a4'
