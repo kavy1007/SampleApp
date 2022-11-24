@@ -1,14 +1,13 @@
 # Docker
 # Build and push an image to Azure Container Registry
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+pool: 'Default'
 
 trigger:
 - main
 
 resources:
 - repo: self
-
-pool: Default
 
 variables:
   # Container registry service connection established during pipeline creation
