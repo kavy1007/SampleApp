@@ -1,8 +1,6 @@
 trigger:
 - main
 
-pool: MyPool
-
 resources:
 - repo: self
 
@@ -25,6 +23,7 @@ stages:
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
+        goals: 'clean install'
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         javaHomeOption: 'JDKVersion'
@@ -32,6 +31,18 @@ stages:
         mavenAuthenticateFeed: false
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
+    
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(system.defaultworkingdirectory)'
+        Contents: '*.yml'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'k8'
+        publishLocation: 'Container'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
