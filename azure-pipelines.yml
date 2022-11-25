@@ -39,6 +39,5 @@ stages:
         command: 'buildAndPush'
         repository: $(imageRepository)
         Dockerfile: $(dockerfilePath)
-        buildContext: '$(Build.ArtifactStagingDirectory)'
         tags: |
           $(tag)
