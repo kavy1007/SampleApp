@@ -11,7 +11,7 @@ variables:
   imageRepository: 'kavysampleapp'
   containerRegistry: 'kavyacr27'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-  tag: '$(Build.Repository.Name)_$(Build.BuildId)'
+  tag: '$(Build.BuildId)'
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
