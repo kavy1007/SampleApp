@@ -57,3 +57,4 @@ stages:
         buildContext: '$(Build.ArtifactStagingDirectory)'
         tags: |
           $(tag)
+          'sampleApp'
