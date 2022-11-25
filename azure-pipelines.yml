@@ -52,4 +52,4 @@ stages:
         containerRegistry: 'kavyacr27'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-        buildContext: '$(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
+        buildContext: '$(Build.ArtifactStagingDirectory)'
