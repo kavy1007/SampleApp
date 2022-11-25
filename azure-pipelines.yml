@@ -48,8 +48,12 @@ stages:
         ArtifactName: 'SampleApp'
         publishLocation: 'Container'
     - task: Docker@2
+      displayName: Build and push an image to container registry
       inputs:
-        containerRegistry: 'kavyacr27'
+        containerRegistry: $(containerRegistry)
         command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
+        repository: $(imageRepository)
+        Dockerfile: $(dockerfilePath)
         buildContext: '$(Build.ArtifactStagingDirectory)'
+        tags: |
+          $(tag)
