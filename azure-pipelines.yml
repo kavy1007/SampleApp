@@ -1,8 +1,6 @@
 trigger:
 - main
 
-pool: MyPool
-
 resources:
 - repo: self
 
